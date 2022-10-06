@@ -3,7 +3,13 @@
 ----------------------------------------------------
 require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
+        config = function()
+            require('nvim-treesitter').setup() {
+                auto_install = true,
+            }
+        end
+    }
     use {
         'glepnir/galaxyline.nvim', -- Modeline plugin
         branch = 'main',
@@ -99,6 +105,9 @@ vim.cmd('set expandtab')
 vim.cmd('set hls ic')
 vim.cmd('set relativenumber')
 vim.cmd('packadd packer.nvim')
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.cmd('autocmd BufReadPost,FileReadPost * normal zR')
 vim.cmd([[
     set expandtab 
     set tabstop=4
