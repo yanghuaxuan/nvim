@@ -12,7 +12,7 @@ require('packer').startup(function()
 end)
 
 --- Comfy
-vim.cmd('set shiftwidth=2 smarttab')
+vim.cmd('set shiftwidth=4 smarttab')
 vim.cmd('set tabstop=8 softtabstop=0')
 vim.cmd('set relativenumber')
 
